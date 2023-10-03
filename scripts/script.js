@@ -1,3 +1,5 @@
+/* -------------- Function Declarations ----------*/
+
 function createGrid(gridContainer, cellsPerSide = 32) {
   let cellContainer;
   let cell;
@@ -14,4 +16,16 @@ function createGrid(gridContainer, cellsPerSide = 32) {
   }
 }
 
+/* --------------- Main Program ----------------- */
 
+const gridContainer = document.querySelector('.grid-container');
+
+createGrid(gridContainer, 32);
+
+const cells = document.querySelectorAll('.cell');
+
+gridContainer.addEventListener('mousedown', () => {
+  cells.forEach(cell => cell.addEventListener('mouseover', (e) => {
+    e.target.style = 'background-color: black';
+  }))
+})
