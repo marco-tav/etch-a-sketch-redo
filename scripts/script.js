@@ -34,16 +34,24 @@ function createGrid(gridContainer, cellsPerSide = 32) {
   }
 }
 
+function blackAndWhite(e) {
+  e.target.style = 'background-color: black';
+}
+
+
+
 /* --------------- Main Program ----------------- */
 
 const gridContainer = document.querySelector('.grid-container');
 
-createGrid(gridContainer, 32);
+createGrid(gridContainer, 80);
 
 const cells = document.querySelectorAll('.cell');
 
 gridContainer.addEventListener('mousedown', () => {
-  cells.forEach(cell => cell.addEventListener('mouseover', (e) => {
-    e.target.style = 'background-color: black';
-  }))
+  cells.forEach(cell => cell.addEventListener('mouseover', blackAndWhite))
+})
+
+gridContainer.addEventListener('mouseup', () => {
+  cells.forEach(cell => cell.removeEventListener('mouseover', blackAndWhite))
 })
