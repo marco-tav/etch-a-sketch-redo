@@ -1,5 +1,21 @@
 /* -------------- Function Declarations ----------*/
 
+function createGrid(gridContainer, cellsPerSide = 32) {
+  let cellContainer;
+  let cell;
+
+  for(let i=0; i < cellsPerSide; i++) {
+    cellContainer = document.createElement('div');
+    cellContainer.classList.add('cell-container');
+    gridContainer.appendChild(cellContainer);
+    for(let j=0; j < cellsPerSide; j++) {
+      cell = document.createElement('div');
+      cell.classList.add('cell');
+      cellContainer.appendChild(cell);
+    }
+  }
+}
+
 function randomHexValue() {
   const hexArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"];
 
@@ -18,40 +34,31 @@ function randomHexCode() {
   return hexCode;
 }
 
-function createGrid(gridContainer, cellsPerSide = 32) {
-  let cellContainer;
-  let cell;
-
-  for(let i=0; i < cellsPerSide; i++) {
-    cellContainer = document.createElement('div');
-    cellContainer.classList.add('cell-container');
-    gridContainer.appendChild(cellContainer);
-    for(let j=0; j < cellsPerSide; j++) {
-      cell = document.createElement('div');
-      cell.classList.add('cell');
-      cellContainer.appendChild(cell);
-    }
-  }
-}
-
-function blackAndWhite(e) {
+function blackBackground(e) {
   e.target.style = 'background-color: black';
 }
+
+function clearGrid(gridContainer) {
+  const cellContainers = document.querySelectorAll('.cell-container');
+
+  cellContainers.forEach(cellContainer => cellContainer.remove());
+
+  let gridSize = prompt('Enter a grid size: ');
+
+  createGrid(gridContainer, gridSize);
+}
+
+
 
 
 
 /* --------------- Main Program ----------------- */
 
 const gridContainer = document.querySelector('.grid-container');
+const resetBtn = document.getElementById('clear-grid');
 
-createGrid(gridContainer, 80);
+createGrid(gridContainer, 32);
 
-const cells = document.querySelectorAll('.cell');
-
-gridContainer.addEventListener('mousedown', () => {
-  cells.forEach(cell => cell.addEventListener('mouseover', blackAndWhite))
-})
-
-gridContainer.addEventListener('mouseup', () => {
-  cells.forEach(cell => cell.removeEventListener('mouseover', blackAndWhite))
+resetBtn.addEventListener('click', () => {
+  clearGrid(gridContainer);
 })
