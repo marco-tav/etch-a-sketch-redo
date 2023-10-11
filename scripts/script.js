@@ -38,6 +38,10 @@ function blackBackground(e) {
   e.target.style = 'background-color: black';
 }
 
+function randomHexBackground(e) {
+  e.target.style = `background-color: #${randomHexCode()}`;
+}
+
 function clearGrid(gridContainer) {
   const cellContainers = document.querySelectorAll('.cell-container');
 
@@ -71,6 +75,18 @@ standardModeBtn.addEventListener('click', () => {
 
   gridContainer.addEventListener('mouseup', () => {
     cells.forEach(cell => cell.removeEventListener('mouseover', blackBackground));
+  })
+})
+
+fiestaModeBtn.addEventListener('click', () => {
+  const cells = document.querySelectorAll('.cell');
+
+  gridContainer.addEventListener('mousedown', () => {
+    cells.forEach(cell => cell.addEventListener('mouseover', randomHexBackground));
+  })
+
+  gridContainer.addEventListener('mouseup',() => {
+    cells.forEach(cell => cell.removeEventListener('mouseover', randomHexBackground));
   })
 })
 
