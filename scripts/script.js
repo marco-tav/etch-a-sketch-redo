@@ -68,11 +68,13 @@ const fiestaModeBtn = document.getElementById('fiesta-mode');
 const grayScaleModeBtn = document.getElementById('grayscale-mode');
 const eraserModeBtn = document.getElementById('eraser-mode');
 const resetBtn = document.getElementById('clear-grid');
+const modeIndicator = document.getElementById('mode-indicator');
 
 createGrid(gridContainer, 32);
 
-standardModeBtn.addEventListener('click', () => {
+standardModeBtn.addEventListener('click', (e) => {
   const cells = document.querySelectorAll('.cell');
+  modeIndicator.innerText = `${e.target.innerText} mode`;
 
   gridContainer.addEventListener('mousedown', () => {
     cells.forEach(cell => cell.addEventListener('mouseover', blackBackground));
@@ -83,8 +85,9 @@ standardModeBtn.addEventListener('click', () => {
   })
 })
 
-fiestaModeBtn.addEventListener('click', () => {
+fiestaModeBtn.addEventListener('click', (e) => {
   const cells = document.querySelectorAll('.cell');
+  modeIndicator.innerText = `${e.target.innerText} mode`;
 
   gridContainer.addEventListener('mousedown', () => {
     cells.forEach(cell => cell.addEventListener('mouseover', randomHexBackground));
@@ -95,8 +98,9 @@ fiestaModeBtn.addEventListener('click', () => {
   })
 })
 
-eraserModeBtn.addEventListener('click', () => {
+eraserModeBtn.addEventListener('click', (e) => {
   const cells = document.querySelectorAll('.cell');
+  modeIndicator.innerText = `${e.target.innerText} mode`;
 
   gridContainer.addEventListener('mousedown', () => {
     cells.forEach(cell => cell.addEventListener('mouseover', whiteBackground));
