@@ -42,6 +42,10 @@ function randomHexBackground(e) {
   e.target.style = `background-color: #${randomHexCode()}`;
 }
 
+function whiteBackground(e) {
+  e.target.style = 'background-color: white';
+}
+
 function clearGrid(gridContainer) {
   const cellContainers = document.querySelectorAll('.cell-container');
 
@@ -62,6 +66,7 @@ const gridContainer = document.querySelector('.grid-container');
 const standardModeBtn = document.getElementById('standard-mode');
 const fiestaModeBtn = document.getElementById('fiesta-mode');
 const grayScaleModeBtn = document.getElementById('grayscale-mode');
+const eraserModeBtn = document.getElementById('eraser-mode');
 const resetBtn = document.getElementById('clear-grid');
 
 createGrid(gridContainer, 32);
@@ -87,6 +92,18 @@ fiestaModeBtn.addEventListener('click', () => {
 
   gridContainer.addEventListener('mouseup',() => {
     cells.forEach(cell => cell.removeEventListener('mouseover', randomHexBackground));
+  })
+})
+
+eraserModeBtn.addEventListener('click', () => {
+  const cells = document.querySelectorAll('.cell');
+
+  gridContainer.addEventListener('mousedown', () => {
+    cells.forEach(cell => cell.addEventListener('mouseover', whiteBackground));
+  })
+
+  gridContainer.addEventListener('mouseup', () => {
+    cells.forEach(cell => cell.removeEventListener('mouseover', whiteBackground));
   })
 })
 
