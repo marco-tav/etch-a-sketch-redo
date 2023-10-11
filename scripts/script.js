@@ -55,6 +55,9 @@ function clearGrid(gridContainer) {
 /* --------------- Main Program ----------------- */
 
 const gridContainer = document.querySelector('.grid-container');
+const standardModeBtn = document.getElementById('standard-mode');
+const fiestaModeBtn = document.getElementById('fiesta-mode');
+const grayScaleModeBtn = document.getElementById('grayscale-mode');
 const resetBtn = document.getElementById('clear-grid');
 
 createGrid(gridContainer, 32);
