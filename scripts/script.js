@@ -62,6 +62,18 @@ const resetBtn = document.getElementById('clear-grid');
 
 createGrid(gridContainer, 32);
 
+standardModeBtn.addEventListener('click', () => {
+  const cells = document.querySelectorAll('.cell');
+
+  gridContainer.addEventListener('mousedown', () => {
+    cells.forEach(cell => cell.addEventListener('mouseover', blackBackground));
+  })
+
+  gridContainer.addEventListener('mouseup', () => {
+    cells.forEach(cell => cell.removeEventListener('mouseover', blackBackground));
+  })
+})
+
 resetBtn.addEventListener('click', () => {
   clearGrid(gridContainer);
 })
