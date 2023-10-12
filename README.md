@@ -4,6 +4,10 @@ A re-do of etch-a-sketch
 
 ## Status
 
-It works in black-and-white mode, though that functionality still 
-has to be made into a function. Fiesta and grayscale still have to be 
-made.
+Eraser, black and white and random color modes now work and the dragging issue was corrected.
+
+
+## To-do
+
+- Adding grayscale mode.
+- Replacing the reset mode, that now uses a prompt with a field.
