@@ -11,3 +11,4 @@ Eraser, black and white and random color modes now work and the dragging issue w
 
 - Adding grayscale mode.
 - Replacing the reset mode, that now uses a prompt with a field.
+- Exploring refactoring options to make better code.
