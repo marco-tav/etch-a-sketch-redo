@@ -77,6 +77,8 @@ standardModeBtn.addEventListener('click', (e) => {
   modeIndicator.innerText = `${e.target.innerText} mode`;
 
   gridContainer.addEventListener('mousedown', () => {
+    cells.forEach(cell => cell.removeEventListener('mouseover', randomHexBackground));
+    cells.forEach(cell => cell.removeEventListener('mouseover', whiteBackground));
     cells.forEach(cell => cell.addEventListener('mouseover', blackBackground));
   })
 
@@ -90,6 +92,8 @@ fiestaModeBtn.addEventListener('click', (e) => {
   modeIndicator.innerText = `${e.target.innerText} mode`;
 
   gridContainer.addEventListener('mousedown', () => {
+    cells.forEach(cell => cell.removeEventListener('mouseover', blackBackground));
+    cells.forEach(cell => cell.removeEventListener('mouseover', whiteBackground));
     cells.forEach(cell => cell.addEventListener('mouseover', randomHexBackground));
   })
 
@@ -103,6 +107,8 @@ eraserModeBtn.addEventListener('click', (e) => {
   modeIndicator.innerText = `${e.target.innerText} mode`;
 
   gridContainer.addEventListener('mousedown', () => {
+    cells.forEach(cell => cell.removeEventListener('mouseover', randomHexBackground));
+    cells.forEach(cell => cell.removeEventListener('mouseover', blackBackground));
     cells.forEach(cell => cell.addEventListener('mouseover', whiteBackground));
   })
 
