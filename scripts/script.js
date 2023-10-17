@@ -14,6 +14,12 @@ function createGrid(gridContainer, cellsPerSide = 32) {
       cellContainer.appendChild(cell);
     }
   }
+
+  const cells = document.querySelectorAll('.cell');
+
+  cells.forEach(cell => {
+    let alpha = 0;
+  })
 }
 
 function randomHexValue() {
@@ -56,10 +62,6 @@ function clearGrid(gridContainer) {
   createGrid(gridContainer, gridSize);
 }
 
-
-
-
-
 /* --------------- Main Program ----------------- */
 
 const gridContainer = document.querySelector('.grid-container');
@@ -79,6 +81,7 @@ standardModeBtn.addEventListener('click', (e) => {
   gridContainer.addEventListener('mousedown', () => {
     cells.forEach(cell => cell.removeEventListener('mouseover', randomHexBackground));
     cells.forEach(cell => cell.removeEventListener('mouseover', whiteBackground));
+    
     cells.forEach(cell => cell.addEventListener('mouseover', blackBackground));
   })
 
@@ -87,6 +90,7 @@ standardModeBtn.addEventListener('click', (e) => {
   })
 })
 
+
 fiestaModeBtn.addEventListener('click', (e) => {
   const cells = document.querySelectorAll('.cell');
   modeIndicator.innerText = `${e.target.innerText} mode`;
@@ -94,6 +98,7 @@ fiestaModeBtn.addEventListener('click', (e) => {
   gridContainer.addEventListener('mousedown', () => {
     cells.forEach(cell => cell.removeEventListener('mouseover', blackBackground));
     cells.forEach(cell => cell.removeEventListener('mouseover', whiteBackground));
+    
     cells.forEach(cell => cell.addEventListener('mouseover', randomHexBackground));
   })
 
@@ -102,6 +107,21 @@ fiestaModeBtn.addEventListener('click', (e) => {
   })
 })
 
+
+/*grayScaleModeBtn.addEventListener('click', (e) => {
+  const cells = document.querySelectorAll('.cell');
+  modeIndicator.innerText = `${e.target.innerText} mode`;
+
+  gridContainer.addEventListener('mousedown', (e) => {
+    cells.forEach(cell => cell.removeEventListener('mouseover', blackBackground));
+    cells.forEach(cell => cell.removeEventListener('mouseover', randomHexBackground));
+    cells.forEach(cell => cell.removeEventListener('mouseover', whiteBackground));
+
+    
+  })
+})*/
+
+
 eraserModeBtn.addEventListener('click', (e) => {
   const cells = document.querySelectorAll('.cell');
   modeIndicator.innerText = `${e.target.innerText} mode`;
@@ -109,6 +129,7 @@ eraserModeBtn.addEventListener('click', (e) => {
   gridContainer.addEventListener('mousedown', () => {
     cells.forEach(cell => cell.removeEventListener('mouseover', randomHexBackground));
     cells.forEach(cell => cell.removeEventListener('mouseover', blackBackground));
+    
     cells.forEach(cell => cell.addEventListener('mouseover', whiteBackground));
   })
 
@@ -116,6 +137,7 @@ eraserModeBtn.addEventListener('click', (e) => {
     cells.forEach(cell => cell.removeEventListener('mouseover', whiteBackground));
   })
 })
+
 
 resetBtn.addEventListener('click', () => {
   clearGrid(gridContainer);
